@@ -1,5 +1,7 @@
 const path = require('path')
 
-module.exports = (conf, route) => {
-    conf.entry = path.resolve(route, 'src', 'index.tsx')
-}
+BUILD_F.push(() => {
+    console.log(ENV.root)
+
+    WEBPACK_CONFIG.entry = path.resolve(ENV.root, 'src', 'index.tsx')
+})

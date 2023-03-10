@@ -1,14 +1,30 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = (conf, src ,mode) => {
-    const exclude_var = /node_modules/
+BUILD_F.push(() => {
+    const moduleConfByMode = () => {
+        if (ENV.mode === "DEV") {
+            WEBPACK_CONFIG.module.rules.unshift({
+                test: /\.tsx?$/,
+                enforce: "pre",
+                exclude: ENV.exclude,
+                use: [
+                    {
+                        options: {
+                            eslintPath: require.resolve('eslint')
+                        },
+                        loader: require.resolve('eslint-loader')
+                    }
+                ]
+            },)
+        }
+    }
 
-    conf.module = {
+    WEBPACK_CONFIG.module = {
         rules: [
             {
                 test: /\.[jt]sx?/,
-                include: src,
-                exclude: exclude_var,
+                include: ENV.srcPath,
+                exclude: ENV.exclude,
                 use: ['swc-loader']
             },
             {
@@ -17,7 +33,7 @@ module.exports = (conf, src ,mode) => {
             },
             {
                 test: /\.s[ac]ss$/,
-                exclude: exclude_var,
+                exclude: ENV.exclude,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
             },
             {
@@ -27,19 +43,5 @@ module.exports = (conf, src ,mode) => {
         ]
     }
 
-    if(mode === "DEV") {
-        conf.module.rules.unshift( {
-            test: /\.tsx?$/,
-            enforce: "pre",
-            exclude: exclude_var,
-            use: [
-                {
-                    options: {
-                        eslintPath: require.resolve('eslint')
-                    },
-                    loader: require.resolve('eslint-loader')
-                }
-            ]
-        },)
-    }
-}
+    moduleConfByMode()
+})

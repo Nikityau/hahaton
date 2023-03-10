@@ -1,19 +1,19 @@
 const path = require("path");
 
-
-module.exports = (conf, device ,buildPath) => {
+BUILD_F.push(() => {
     function outputPathByDevice(device) {
-        if(device === "WEB") return path.join(buildPath, 'web')
-        if(device === "WEBVIEW") return path.join(buildPath, 'webview')
+        const buildPath = ENV.buildPath
+
+        if (device === "WEB") return path.join(buildPath, 'web')
+        if (device === "WEBVIEW") return path.join(buildPath, 'webview')
     }
 
-
-    conf.output = {
+    WEBPACK_CONFIG.output = {
         filename: "[name].[contenthash].bundle.js",
         assetModuleFilename: "assets/[name][ext]",
         sourceMapFilename: "[name].js.map",
-        path: outputPathByDevice(device),
-        publicPath: device === "WEBVIEW" ? "./" : "/",
+        path: outputPathByDevice(ENV.device),
+        publicPath: ENV.device === "WEBVIEW" ? "./" : "/",
         clean: true
     }
-}
+})

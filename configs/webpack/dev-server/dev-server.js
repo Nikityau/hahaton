@@ -1,7 +1,7 @@
-module.exports = (conf, src) => {
-    conf.devServer = {
+BUILD_F.push(() => {
+    WEBPACK_CONFIG.devServer = {
         static: {
-            directory: src
+            directory: ENV.srcPath
         },
         historyApiFallback: true,
         compress: false,
@@ -12,4 +12,5 @@ module.exports = (conf, src) => {
             reconnect: true
         }
     }
-}
+
+})
