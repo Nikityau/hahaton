@@ -1,106 +1,35 @@
 const path = require('path')
 
-const TerserPlugin = require("terser-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin")
-
-const exclude_var = /node_modules/
-
-const srcPath = path.resolve(__dirname, 'src')
-const buildPath = path.resolve(__dirname, 'build')
-
-function outputPathByDevice(device) {
-    if(device === "WEB") return path.join(buildPath, 'web')
-    if(device === "WEBVIEW") return path.join(buildPath, 'webview')
-}
-
+const entryConf = require('./configs/webpack/entry/entry')
+const resolveConf = require('./configs/webpack/resolve/resolve')
+const outputConf = require('./configs/webpack/output/output')
+const optimizationConf = require('./configs/webpack/optimization/optimization')
+const devServerConf = require('./configs/webpack/dev-server/dev-server')
+const pluginConf = require('./configs/webpack/plugins/plugins')
+const moduleConf = require('./configs/webpack/module/module')
 
 module.exports = (env) => {
+
+    const root = path.resolve(__dirname)
+    const srcPath = path.resolve(root, 'src')
+    const buildPath = path.resolve(root, 'build')
+
+    const publicPath = path.resolve(root, 'public')
 
     const mode = env.MODE
     const device = env.DEVICE
 
-    return {
-        entry: path.resolve(__dirname, 'src', 'index.tsx'),
-        resolve: {
-            extensions: ['.js', '.jsx', '.ts', '.tsx'],
-            alias: {
-                // ALIASES
-            },
-        },
-        output: {
-            filename: "[name].[contenthash].bundle.js",
-            assetModuleFilename: "assets/[name][ext]",
-            sourceMapFilename: "[name].js.map",
-            path: outputPathByDevice(device),
-            publicPath: device === "WEBVIEW" ? "./" : "/",
-            clean: true
-        },
+    const config = {
         mode: mode === "PROD" ? "production" : "development",
-        optimization: {
-            minimize: mode === "PROD",
-            minimizer: mode === "PROD" ? [
-                new TerserPlugin({
-                    minify: TerserPlugin.uglifyJsMinify
-                })
-            ] : []
-        },
-        devServer: {
-            static: {
-                directory: path.resolve(__dirname, 'src')
-            },
-            historyApiFallback: true,
-            compress: false,
-            port: 8080,
-            open: true,
-            hot: true,
-            client: {
-                reconnect: true
-            }
-        },
-        plugins: [
-            new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'public', 'index.html'),
-                favicon: path.resolve(__dirname, 'public', 'assets', 'favicon.png'),
-                minify: false,
-            }),
-            new MiniCssExtractPlugin({
-                filename: '[name].[contenthash].bundle.css'
-            }),
-            new ESLintPlugin({
-                files: './.eslintrc.json',
-                useEslintrc: true
-            })
-        ],
-        module: {
-            rules: [
-                {
-                    test: /\.css$/,
-                    use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-                },
-                {
-                    test: /\.s[ac]ss$/,
-                    exclude: exclude_var,
-                    use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader','sass-loader']
-                },
-                {
-                    test: /\.[cm]js?x?$/,
-                    include: path.resolve(__dirname, 'src'),
-                    exclude: exclude_var,
-                    use: ['swc-loader']
-                },
-                {
-                    test: /\.tsx?/,
-                    include: path.resolve(__dirname, 'src'),
-                    exclude: exclude_var,
-                    use: ['swc-loader']
-                },
-                {
-                    test: /\.(png|jpg|jpeg|gif|svg)$/,
-                    type: 'asset/resource'
-                },
-            ]
-        }
     }
+
+    entryConf(config, root)
+    resolveConf(config)
+    outputConf(config, device, buildPath)
+    optimizationConf(config, mode)
+    devServerConf(config, srcPath)
+    pluginConf(config, publicPath)
+    moduleConf(config, srcPath, mode)
+
+    return config
 }
