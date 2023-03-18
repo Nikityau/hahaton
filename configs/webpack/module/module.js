@@ -43,5 +43,5 @@ BUILD_F.push(() => {
         ]
     }
 
-    moduleConfByMode()
+    //moduleConfByMode()
 })

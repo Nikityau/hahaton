@@ -1,0 +1,31 @@
+.button-ui {
+  cursor: pointer;
+  
+  position: relative;
+
+  width: fit-content;
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #E9E2E2;
+
+  background: #7526DB;
+
+  padding: 15px 57px;
+
+  &:before {
+    transform: translate(-9px,-19.5px) rotate(-30deg);
+
+    border-color: #7526DB;
+  }
+
+  &:after {
+    transform: translate(9.5px,19.5px) rotate(-30deg);
+
+    border-color: #7526DB;
+  }
+}

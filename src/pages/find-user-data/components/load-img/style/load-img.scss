@@ -1,0 +1,64 @@
+.load-img {
+  width: 100%;
+
+  input {
+    width: 400px;
+    height: 400px;
+
+    background-color: #E9E2E2;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+.load-img__img {
+  width: 100%;
+  height: 511px;
+
+  //background-color: #E9E2E2;
+
+  cursor: pointer;
+}
+
+.load-img__real-img {
+  width: 100%;
+  height: 511px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  img {
+    width: 50%;
+    height: auto;
+  }
+}
+
+.load-img__template {
+  width: 100%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .load-img__info {
+    font-family: 'Feature Mono', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 50px;
+
+    color: #E9E2E2;
+
+    text-align: center;
+  }
+}
