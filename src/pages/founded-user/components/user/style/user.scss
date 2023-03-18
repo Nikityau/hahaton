@@ -1,0 +1,97 @@
+.user {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user__title {
+  font-family: 'Feature Mono', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 18px;
+
+  color: #E9E2E2;
+}
+
+.user__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.user__photo {
+  width: 511px;
+  height: 511px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.user-data {
+  display: flex;
+  gap: 10px;
+}
+
+.user__data-keys,
+.user__data-values {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .user__data-k,
+  .user__data-v {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #8E8E8E;
+
+  }
+
+  .user_data-age {
+    display: flex;
+    gap: 10px;
+  }
+
+  .user__data-v {
+    color: #E9E2E2;
+  }
+}
+
+.go-back {
+  position: absolute;
+  bottom: 0;
+  right: 20%;
+
+  transform: translate(-50%, 0);
+
+  .go-back__div {
+    position: relative;
+
+    padding: 15px 54px;
+
+    border: 2px solid #A0A0A0;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #E9E2E2;
+  }
+}
+

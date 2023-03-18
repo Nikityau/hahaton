@@ -1,0 +1,51 @@
+.similar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.similar__title {
+  font-family: 'Feature Mono', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 18px;
+
+  color: #E9E2E2;
+}
+
+.similar__users {
+  display: flex;
+  gap: 20px;
+}
+
+.similar__user {
+  max-width: 328px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.similar__user-photo {
+  width: 328px;
+  height: 328px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.similar__user-name {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #E9E2E2;
+}

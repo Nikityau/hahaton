@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 
 import {AppRoutes} from "../../app-router/app-router";
@@ -24,17 +24,24 @@ const FindUser = () => {
 
     const fuContext = useContext(FindUserContext)
 
+    const [isError, setIsError] = useState<boolean>(false)
+
     const onClick = () => {
         console.log('send photo')
         const res = FindUserController.findUser(fuContext.img)
 
         if(!res) {
-
-
+            setError(true)
             return
         }
 
+
+        fuContext.img = null
         nav(AppRoutes.foundedUser,{ replace: true })
+    }
+
+    const setError = (is: boolean) => {
+        setIsError(is)
     }
 
     return (
@@ -45,7 +52,7 @@ const FindUser = () => {
                     <LoadImg/>
                     <Button title={'Отправить'} onClick={onClick}/>
                 </div>
-                <PhotoError/>
+                <PhotoError is={isError} cb={setError}/>
             </div>
         </FindUserContext.Provider>
     );
