@@ -8,9 +8,9 @@ import {FindUserController} from "./controller/find-user";
 import NavTo from "../../ui/nav-to/nav-to";
 import Button from "../../ui/button/button";
 import LoadImg from "./components/load-img/load-img";
+import PhotoError from "./components/photo-error/photo-error";
 
 import './style/find-user.scss'
-import PhotoError from "./components/photo-error/photo-error";
 
 const contextValue = {
     img: null
@@ -26,15 +26,14 @@ const FindUser = () => {
 
     const [isError, setIsError] = useState<boolean>(false)
 
-    const onClick = () => {
+    const onClick = async () => {
         console.log('send photo')
-        const res = FindUserController.findUser(fuContext.img)
+        const res = await FindUserController.findUser(fuContext.img)
 
         if(!res) {
             setError(true)
             return
         }
-
 
         fuContext.img = null
         nav(AppRoutes.foundedUser,{ replace: true })
