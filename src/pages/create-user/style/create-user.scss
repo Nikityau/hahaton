@@ -77,6 +77,8 @@
   width: 80%;
   height: 511px;
 
+  overflow: hidden;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,6 +98,16 @@
 
     color: #E9E2E2;
   }
+}
+.create-user__real-img {
+  width: 80%;
+  height: 511px;
+
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .create-user__tab {
