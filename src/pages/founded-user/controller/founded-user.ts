@@ -17,35 +17,35 @@ export class FoundedUserController {
             setTimeout(() => {
                 res({
                     user: {
-                        photo: chel_img,
+                        url: chel_img,
                         fio: 'Иванов Пётр Дмитриевич',
                         email: 'ivanoww@yandex.ru',
-                        date_beth: '10.01.1998',
+                        date_beth: '2023-03-18 13:14:33',
                         city: 'Ростов-на-Дону',
                         inn: '79543607186'
                     },
                     similar: [
                         {
-                            photo: chel_img,
+                            url: chel_img,
                             fio: 'Михайлюк Дмитрий Хакатонович',
                             email: 'ivanoww@yandex.ru',
-                            date_beth: '10.01.1998',
+                            date_beth: '2023-03-18 13:14:33',
                             city: 'Ростов-на-Дону',
                             inn: '79543607186'
                         },
                         {
-                            photo: chel_img,
+                            url: chel_img,
                             fio: 'Иванов Пётр Дмитриевич',
                             email: 'ivanoww@yandex.ru',
-                            date_beth: '10.01.1998',
+                            date_beth: '2023-03-18 13:14:33',
                             city: 'Ростов-на-Дону',
                             inn: '79543607186'
                         },
                         {
-                            photo: chel_img,
+                            url: chel_img,
                             fio: 'Иванов Пётр Дмитриевич',
                             email: 'ivanoww@yandex.ru',
-                            date_beth: '10.01.1998',
+                            date_beth: '2023-03-18 13:14:33',
                             city: 'Ростов-на-Дону',
                             inn: '79543607186'
                         }

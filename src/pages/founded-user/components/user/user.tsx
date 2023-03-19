@@ -11,6 +11,12 @@ type UserProps = {
 
 const User = ({data}: UserProps) => {
 
+    const parseDate = (date):string => {
+        const [y, m, d] = date.split(' ')[0].split('-')
+
+        return `${d}.${m}.${y}`
+    }
+
     const getAge = (date: string): number => {
         if(!date) {
             return 0
@@ -33,10 +39,13 @@ const User = ({data}: UserProps) => {
             </div>
             <div className={'user__wrapper'}>
                 <div className={'user__photo'}>
-                    <img src={data?.photo} alt={'photo'}/>
+                    <img src={data?.url} alt={'photo'}/>
                 </div>
                 <div className={'user-data'}>
                     <div className={'user__data-keys'}>
+                        <div className={'user__data-k'}>
+                            <span>Совпадение:</span>
+                        </div>
                         <div className={'user__data-k'}>
                             <span>ФИО:</span>
                         </div>
@@ -55,11 +64,14 @@ const User = ({data}: UserProps) => {
                     </div>
                     <div className={'user__data-values'}>
                         <div className={'user__data-v'}>
+                            <span>{data?.percent} %</span>
+                        </div>
+                        <div className={'user__data-v'}>
                             <span>{data?.fio}</span>
                         </div>
                         <div className={'user__data-v user_data-age'}>
-                            <span>{data?.date_beth}</span>
-                            <span>({getAge(data?.date_beth)} лет)</span>
+                            <span>{parseDate(data?.date_beth)}</span>
+                            <span>({getAge(parseDate(data?.date_beth))} лет)</span>
                         </div>
                         <div className={'user__data-v'}>
                             <span>{data?.city}</span>

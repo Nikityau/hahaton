@@ -21,10 +21,10 @@ const Similar = ({data}: SimilarProps) => {
                             className={'similar__user'}
                         >
                             <div className={'similar__user-photo'}>
-                                <img src={user.photo} alt={'photo'}/>
+                                <img src={user?.url} alt={'photo'}/>
                             </div>
                             <div className={'similar__user-name'}>
-                                <span>{ user.fio }</span>
+                                <span>{ user?.fio }</span>
                             </div>
                         </div>
                     ))
