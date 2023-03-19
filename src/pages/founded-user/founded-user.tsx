@@ -28,7 +28,7 @@ const FoundedUser = () => {
         } else {
             setTimeout(() => {
                 queryUser()
-            }, 1000)
+            }, 3000)
         }
     }
 

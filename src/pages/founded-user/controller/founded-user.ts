@@ -4,15 +4,15 @@ import chel_img from '../../../assets/chel.png'
 import axios from "axios";
 
 export class FoundedUserController {
-    static async getUser():Promise<any> {
-        if(GlobalEnv.iS_DEV) {
+    static async getUser(): Promise<any> {
+        if (GlobalEnv.iS_DEV) {
             return await FoundedUserController.getUserMock()
         }
 
         return await FoundedUserController.getUserReal()
     }
 
-    static async getUserMock():Promise<any> {
+    static async getUserMock(): Promise<any> {
         return new Promise(res => {
             setTimeout(() => {
                 res({
@@ -55,28 +55,28 @@ export class FoundedUserController {
         })
     }
 
-    static async getUserReal():Promise<any> {
-        try {
-            const qId = localStorage.getItem('queueId')
+    static async getUserReal(): Promise<any> {
+        const qId = localStorage.getItem('queueId')
 
-            const res = await axios.get(`${GlobalEnv.URL_REQUEST}/api/get-info/${qId}`)
 
-            if(res.status == 200) {
-                return {
-                    user: res.data,
-                    similar: res.data.similar
+        return new Promise(response => {
+            setTimeout(async () => {
+                const res = await axios.get(`${GlobalEnv.URL_REQUEST}/api/get-info/${qId}`)
+
+                if (res.status == 200) {
+                    response({
+                        user: res.data,
+                        similar: res.data.similar
+                    })
                 }
-            }
 
-            return {
-                user: {},
-                similar: []
-            }
-        } catch (args: any) {
-            return {
-                user: {},
-                similar: []
-            }
-        }
+                response({
+                    user: {},
+                    similar: []
+                })
+            }, 2000)
+        })
+
+
     }
 }

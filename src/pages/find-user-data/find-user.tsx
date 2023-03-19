@@ -30,12 +30,13 @@ const FindUser = () => {
         console.log('send photo')
         const res = await FindUserController.findUser(fuContext.img)
 
+        console.log('here')
+
         if(!res) {
             setError(true)
             return
         }
 
-        fuContext.img = null
         nav(AppRoutes.foundedUser,{ replace: true })
     }
 
