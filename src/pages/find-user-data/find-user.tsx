@@ -32,10 +32,10 @@ const FindUser = () => {
 
         console.log('here')
 
-        if(!res) {
+        /*if(!res) {
             setError(true)
             return
-        }
+        }*/
 
         nav(AppRoutes.foundedUser,{ replace: true })
     }

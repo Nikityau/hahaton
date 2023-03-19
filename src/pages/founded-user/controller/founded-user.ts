@@ -61,19 +61,27 @@ export class FoundedUserController {
 
         return new Promise(response => {
             setTimeout(async () => {
-                const res = await axios.get(`${GlobalEnv.URL_REQUEST}/api/get-info/${qId}`)
+                try {
+                    const res = await axios.get(`${GlobalEnv.URL_REQUEST}/api/get-info/${qId}`)
 
-                if (res.status == 200) {
+                    if (res.status == 200) {
+                        response({
+                            user: res.data,
+                            similar: res.data.similar
+                        })
+                    }
+
                     response({
-                        user: res.data,
-                        similar: res.data.similar
+                        user: {},
+                        similar: []
+                    })
+                } catch (e) {
+                    console.log('errr')
+                    response({
+                        user: {},
+                        similar: []
                     })
                 }
-
-                response({
-                    user: {},
-                    similar: []
-                })
             }, 2000)
         })
 

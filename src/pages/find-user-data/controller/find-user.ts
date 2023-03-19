@@ -46,6 +46,7 @@ export class FindUserController {
             return false
 
         } catch (args:any) {
+            console.log('here')
             return false
         }
     }

@@ -26,6 +26,7 @@ const FoundedUser = () => {
             setUser(res.user)
             setSimilar(res.similar)
         } else {
+            console.log('wait')
             setTimeout(() => {
                 queryUser()
             }, 3000)
