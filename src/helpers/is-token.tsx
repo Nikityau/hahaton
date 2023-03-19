@@ -15,11 +15,13 @@ const IsToken = ({children}: React.PropsWithChildren) => {
     }, [])
 
     const isValid = (): boolean => {
-        if(GlobalEnv.iS_DEV) {
+
+        return isValidMock()
+        /*if(GlobalEnv.iS_DEV) {
             return isValidMock()
         }
 
-        return isValidReal()
+        return isValidReal()*/
     }
 
     const isValidMock = (): boolean => {

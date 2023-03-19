@@ -38,6 +38,8 @@ const Auth = () => {
             return
         }
 
+        console.log('here')
+
         setError(false)
         authContext.error = null
 
