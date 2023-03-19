@@ -22,7 +22,7 @@ const LoadImg = () => {
 
         const fs = new FileReader()
         fs.onload = () => {
-            fuContext.img = e.target.value
+            fuContext.img = fs.result
             setImgUrl(fs.result)
         }
         fs.readAsDataURL(files[0])

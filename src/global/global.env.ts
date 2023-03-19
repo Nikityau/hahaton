@@ -3,5 +3,5 @@ export const GlobalEnv: {
     URL_REQUEST: string
 } = {
     iS_DEV: false,
-    URL_REQUEST: 'xyi znaet'
+    URL_REQUEST: 'http://xyi_host:8080'
 }

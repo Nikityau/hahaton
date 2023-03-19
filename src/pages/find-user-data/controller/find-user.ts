@@ -23,6 +23,7 @@ export class FindUserController {
     static async findUserReal(img): Promise<boolean> {
         try {
             const formData = new FormData()
+            console.log('find',img)
             formData.append('photo', img)
             const res = await axios.post(`${GlobalEnv.URL_REQUEST}/api/search-user`, formData, {
                 headers: {
