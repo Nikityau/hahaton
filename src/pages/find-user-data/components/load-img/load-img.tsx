@@ -55,7 +55,7 @@ const LoadImg = () => {
 
                 }
             </div>
-            <input ref={ref} type={"file"} accept={'image/png, image/jpeg'} onChange={onChange}/>
+            <input id={'input-file'} ref={ref} type={"file"} accept={'image/png, image/jpeg'} onChange={onChange}/>
         </div>
     );
 };

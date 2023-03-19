@@ -22,9 +22,13 @@ export class FindUserController {
 
     static async findUserReal(img): Promise<boolean> {
         try {
+            const ipf = document.querySelector('#input-file') as HTMLInputElement
+            console.log('file',ipf.files[0])
+
             const formData = new FormData()
-            console.log('find',img)
-            formData.append('photo', img)
+            //console.log('find',img)
+            formData.append('photo', ipf.files[0])
+            console.log(formData)
             const res = await axios.post(`${GlobalEnv.URL_REQUEST}/api/search-user`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
