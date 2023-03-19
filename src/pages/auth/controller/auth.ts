@@ -20,11 +20,12 @@ const OkResponse: ReqResponse = {
 export class AuthController {
     static auth(login:string, password:string): ReqResponse {
         console.log(login, password)
-        if(GlobalEnv.iS_DEV) {
+        return AuthController.authMock(login, password)
+        /*if(GlobalEnv.iS_DEV) {
             return AuthController.authMock(login, password)
         }
 
-        return AuthController.authReal(login, password)
+        return AuthController.authReal(login, password)*/
     }
 
     static authMock(login:string, password:string): ReqResponse {
