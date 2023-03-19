@@ -121,6 +121,7 @@ const CreateUser = () => {
         formData.append('inn', context.inn)
         formData.append('dateBeth', context.date)
         formData.append('city', context.city)
+        formData.append('ema', context.email)
 
         const req = async () => {
            try {
